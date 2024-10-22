@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - PORT=${PORT}
+      - NODE_ENV=${NODE_ENV}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASS=${POSTGRES_PASS}
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - POSTGRES_TYPEORM_SYNCHRONIZE=${POSTGRES_TYPEORM_SYNCHRONIZE}
+      - POSTGRES_TYPEORM_DROP_SCHEMA=${POSTGRES_TYPEORM_DROP_SCHEMA}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - JWT_REFRESH_EXPIRES_IN=${JWT_REFRESH_EXPIRES_IN}
+      - CORS_ORIGINS=${CORS_ORIGINS}
+      - THROTTLE_TTL=${THROTTLE_TTL}
+      - THROTTLE_LIMIT=${THROTTLE_LIMIT}
+      - SMTP_SECURE=${SMTP_SECURE}
+      - SMTP_HOST=${SMTP_HOST}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+      - SMTP_FROM=${SMTP_FROM}
+      - COINGECKO_API_URL=${COINGECKO_API_URL}
+      - COINGECKO_API_KEY=${COINGECKO_API_KEY}
+      - MORALIS_API_KEY=${MORALIS_API_KEY}
+    ports:
+      - '9000:9000'
+    volumes:
+      - .:/usr/src/app
+    restart: unless-stopped
